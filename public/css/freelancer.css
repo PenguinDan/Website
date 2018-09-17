@@ -44,12 +44,12 @@ hr.star-dark:after {
 }
 
 hr.star-light {
-  border-color: #fff;
+  border-color: #FFEF96;
 }
 
 hr.star-light:after {
-  color: #fff;
-  background-color: #18BC9C;
+  color: #FFEF96;
+  background-color: #A0D9FB;
 }
 
 hr.star-dark {
@@ -325,8 +325,8 @@ form .row:first-child .floating-label-form-group {
 }
 
 .footer {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
   background-color: #2C3E50;
   color: #fff;
 }
@@ -348,7 +348,7 @@ a:focus, a:hover, a:active {
 }
 
 .bg-primary {
-  background-color: #18BC9C !important;
+  background-color: #A0D9FB !important;
 }
 
 .bg-secondary {

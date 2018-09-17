@@ -3,9 +3,7 @@
 const fs = require('fs');
 
 const loadMainPage = function(req, res) {
-	res.render('home', {
-		name: 'Daniel'
-	})
+	res.render('index');
 	return res;
 }
 

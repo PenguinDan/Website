@@ -8,7 +8,6 @@ const helmet = require('helmet');
 const BODY_PARSER = require('body-parser');
 const fs = require('fs');
 const ROUTES = require('./api/router');
-const exphbs = require('express-handlebars');
 const path = require('path');
 
 // Setup Express Routes
@@ -19,7 +18,7 @@ const httpsApp = EXPRESS();
 const ONE_YEAR = 31536000000;
 const PORT = 8080;
 const SECURE_PORT = 3000;
-const CERT_LOC = '/etc/letsencrypt/live/penguindan.com/';
+const CERT_LOC = '/etc/letsencrypt/live/www.penguindan.com/';
 const ROUTER = ROUTES(EXPRESS.Router());
 
 
@@ -37,7 +36,12 @@ let cipher =  ['ECDHE-ECDSA-AES256-GCM-SHA384',
 
 // Redirect HTTP connections to HTTPS
 httpApp.get('*', function(req, res, next) {
-	res.redirect('https://' + req.headers.host + req.url);
+	if(req.headers.host === "penguindan.com"){
+		res.redirect('https://www.' + req.headers.host + req.url);
+	}
+	else{
+		res.redirect('https://' + req.headers.host + req.url);
+	}
 });
 
 httpsApp.use(helmet.hsts({
@@ -49,13 +53,8 @@ httpsApp.use(helmet.hsts({
 httpsApp.use(BODY_PARSER.urlencoded({extended: true}));
 httpsApp.use(BODY_PARSER.json());
 httpsApp.use('/', ROUTER);
-httpsApp.engine('.hbs', exphbs({
-	defaultLayout: 'main',
-	extname: '.hbs',
-	layoutsDir: path.join(__dirname, 'views/layouts')
-}));
-httpsApp.set('view engine', '.hbs');
-httpsApp.set('views', path.join(__dirname, 'views'));
+httpsApp.set('view engine', 'pug');
+httpsApp.use(EXPRESS.static(__dirname + '/public'));
 
 let options = {
 	key: fs.readFileSync(CERT_LOC + 'privkey.pem'),
