@@ -18,6 +18,10 @@ h6 {
   font-family: 'Montserrat';
 }
 
+.text-black{
+  color: rgb(0,0,0) !important;
+}
+
 hr.star-light,
 hr.star-dark {
   max-width: 15rem;

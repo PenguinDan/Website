@@ -9,6 +9,9 @@ const BODY_PARSER = require('body-parser');
 const fs = require('fs');
 const ROUTES = require('./api/router');
 const path = require('path');
+const phpExpress = require('php-express')({
+  binPath: 'php'
+});
 
 // Setup Express Routes
 const httpApp = EXPRESS();
@@ -54,6 +57,11 @@ httpsApp.use(BODY_PARSER.urlencoded({extended: true}));
 httpsApp.use(BODY_PARSER.json());
 httpsApp.use('/', ROUTER);
 httpsApp.set('view engine', 'pug');
+httpsApp.set('views', path.join(__dirname, '/views'));
+// Set up the PHP engine for the node project
+httpsApp.engine('php', phpExpress.engine);
+// Route all .php file to php-express
+httpsApp.all(/.+\.php$/, phpExpress.router);
 httpsApp.use(EXPRESS.static(__dirname + '/public'));
 
 let options = {
