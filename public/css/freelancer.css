@@ -37,6 +37,10 @@ h6 {
   font-size: xx-large;
 }
 
+.portfolio-img-fluid{
+  max-width: 55%;
+  height: auto;
+}
 
 hr.star-light,
 hr.star-dark {
