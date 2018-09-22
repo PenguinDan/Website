@@ -5,13 +5,9 @@ $(function() {
       // additional error messages or events
     },
     submitSuccess: function($form, event) {
-      // When the send button is clicked, reset the fields
-      $('#contactForm').trigger("reset");
-
-      // Let the user know that the message has been sent successfully
       $('#success').html("<div class='alert alert-success'>");
       $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
-      $('#success > .alert-success').append("<strong>Your message has been sent. </strong>");
+      $('#success > .alert-success').append("<strong>Sending...</strong>");
       $('#success > .alert-success').append('</div>');
 
       event.preventDefault(); // prevent default submit behaviour
@@ -39,6 +35,12 @@ $(function() {
         cache: false,
         success: function() {
           // Success message
+          // Let the user know that the message has been sent successfully
+          $('#success').html("<div class='alert alert-success'>");
+          $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+          $('#success > .alert-success').append("<strong>Your message has been sent. </strong>");
+          $('#success > .alert-success').append('</div>');
+          $('#contactForm').trigger("reset");
         },
         error: function() {
           // Fail message
