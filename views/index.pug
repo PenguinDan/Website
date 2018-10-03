@@ -2,8 +2,14 @@
 <html lang="en">
 
   <head>
+    <meta charset="UTF-8">
+    script(async, src='https://www.googletagmanager.com/gtag/js?id=UA-126222813-1').
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+      gtag('config', 'GA_TRACKING_ID');
 
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Daniel's Portfolio Website, ALL ARE WELCOME">
     <meta name="author" content="Daniel Kim">
@@ -119,9 +125,8 @@
           </div>
         </div>
         <div class="text-center mt-4">
-          <a class="btn btn-xl btn-outline-light" href="#">
-            <i class="fas fa-download mr-2"></i>
-            <h4>Download Resume!</h4>
+          <a class="btn btn-xl btn-outline-light" href="documents/Resume.pdf" download>
+            <i class="fas fa-download mr-2">Download Resume!</i>
           </a>
         </div>
       </div>
